@@ -3,11 +3,16 @@
 
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
     """A class that serializes instances to a JSON file
     and deserializes JSON file to instances"""
+    classes = {
+        'BaseModel': BaseModel,
+        'User': User
+    }
     __file_path = "file.json"
     __objects = {}
 

@@ -160,7 +160,7 @@ class TestBaseModel_save_method(unittest.TestCase):
         obj = BaseModel()
         obj.save()
         objid = "BaseModel" + obj.id
-        with open("file.json", "r") as f:
+        with open(FileStorage.__file_path, "r", encoding="utf") as f:
             self.assertIn(objid, f.read())
 
 

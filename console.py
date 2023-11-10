@@ -147,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
                 print(count)
             else:
                 if key[-2:] != "()":
-                    print("** invalid command **")
+                    print("** no instance found **")
                 elif key[:-2] not in my_data:
                     print("** method does not exist **")
                 elif key[:-2] in my_data:

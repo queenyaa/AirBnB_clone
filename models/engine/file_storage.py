@@ -23,6 +23,10 @@ class FileStorage:
         'Amenity': Amenity,
         'Review': Review
     }
+
+    def __init__(self):
+        """Class constructor"""
+        
     __file_path = "file.json"
     __objects = {}
 

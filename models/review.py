@@ -4,7 +4,9 @@
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
-    """Class state"""
+class Review(BaseModel):
+    """Class review"""
 
-    name = ""
+    place_id = ""
+    user_id = ""
+    text = ""

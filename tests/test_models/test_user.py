@@ -4,6 +4,7 @@ Unittest to test the user class
 """
 
 import unittest
+import models
 from models.user import User
 from datetime import datetime
 
@@ -18,6 +19,10 @@ class TestUser(unittest.TestCase):
     def test_instance_stored_in_obj(self):
         # test stored users
         self.assertIn(User(), models.storage.all().values())
+
+    def test_id_public(self):
+        # test if the id is a public string
+        self.assertEqual(str, type(User().id))
 
     def test_attributes(self):
         # testing attributes

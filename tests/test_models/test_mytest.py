@@ -27,6 +27,14 @@ class TestBaseModel(unittest.TestCase):
         # checks if created datetime is public
         self.assertEqual(datetime, type(BaseModel().created_at))
 
+    def test_updated_at_datetime(self):
+        # checks if updated datetime is public
+        self.assertEqual(datetime, type(BaseModel().update_at))
+
+    def test_unused_args(self):
+        obj = BaseModel(None)
+        self.assertNotIn(None, obj.__dict__.values())
+
     def test_init_with_kwargs(self):
         # Testing BaseModel initialization with kwargs
         data = {
@@ -55,22 +63,19 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(obj, 'updated_at'))
         self.assertIsInstance(obj.updated_at, datetime)
 
+    def test_inst_with_None_kwargs(self):
+        # test none kwargs
+        with self.assertRaises(TypeError):
+            BaseModel(id=None, created_at=None, updated_at=None)
+
     def test_two_unique_ids(self):
         # Tests if two ids are unique
         obj1 = BaseModel()
         obj2 = BaseModel()
         self.assertNotEqual(obj1.id, obj2.id)
 
-    def test_save_method(self):
-        # Testing the saving method
-        obj = BaseModel()
-        old_updated_at = obj.updated_at
-        obj.save()
-        new_updated_at = obj.updated_at
-        self.assertNotEqual(old_updated_at, new_updated_at)
-
     def test_to_dict_method(self):
-        # Testing the saving method
+        # Testing the __dict__ method
         obj = BaseModel()
         obj_dict = obj.to_dict()
         self.assertTrue(isinstance(obj_dict, dict))
@@ -78,6 +83,31 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(obj_dict['id'], obj.id)
         self.assertEqual(obj_dict['created_at'], obj.created_at.isoformat())
         self.assertEqual(obj_dict['updated_at'], obj.updated_at.isoformat())
+
+    def test_dict_type(self):
+        # test the type of to_dict
+        obj = BaseModel()
+        self.assertTrue(dict, type(obj.to_dict))
+
+    def test_dict_correct(self):
+        # test to check the correctness of the keys
+        obj = BaseModel()
+        self.assertIn("id", obj.to_dict())
+        self.assertIn("created_at", obj.to_dict())
+        self.assertIn("updated_at", obj.to_dict())
+        self.assertIn("__class__", obj.to_dict())
+
+    def test_dict_add_attributes(self):
+        # test to check on additino of attributes to dict
+        obj = BaseModel()
+        obj.name = "ALXAfrica"
+        self.assertIn("name", obj.to_dict())
+
+    def test_dict_with_arg(self):
+        # test to check args in to_dict
+        obj = BaseModel()
+        with self.assertRaises(TypeError):
+            obj.to_dict(None)
 
     def test_str_method(self):
         # Testing the __str__ method
@@ -94,6 +124,44 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("'id': '8602393'", obj_str)
         self.assertIn("'created_at': " + obj_dt_r, obj_str)
         self.assertIn("'updated_at': " + obj_dt_r, obj_str)
+
+
+class TestBaseModel_save_method(unittest.TestCase):
+    """ unittesting to check the save method """
+
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.ison", "tmp")
+        except IOError:
+            pass
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def test_save_method(self):
+        # Testing the saving method
+        obj = BaseModel()
+        old_updated_at = obj.updated_at
+        obj.save()
+        new_updated_at = obj.updated_at
+        self.assertNotEqual(old_updated_at, new_updated_at)
+
+    def test_save_update(self):
+        # test save updates
+        obj = BaseModel()
+        obj.save()
+        objid = "BaseModel" + obj.id
+        with open("file.json", "r") as f:
+            self.assertIn(objid, f.read())
 
 
 if __name__ == '__main__':

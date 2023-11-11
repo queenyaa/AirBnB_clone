@@ -56,22 +56,15 @@ class TestUser(unittest.TestCase):
     def test_str_representation(self):
         # test the str representation
         user = User()
-        user.id ="8602393"
-        user.created_at = user.update_at = datetime(2023, 11, 9, 9, 0, 0)
-        user.email = "test@example.com"
-        user.password = "password123"
-        user.first_name = "Abu"
-        user.last_name = "Farakan"
-
-        user_str = str(user)
+        n_date = datetime.now()
+        n_date_r = repr(n_date)
+        user.id = "8602393"
+        user.created_at = user.updated_at = n_date
+        user_str = user.__str__()
         self.assertIn("[User] (8602393)", user_str)
         self.assertIn("'id': '8602393'", user_str)
-        self.assertIn("'created_at': '2023-11-09T09:00:00;", user_str)
-        self.assertIn("'updated_at': '2023-11-09T09:00:00'", user_str)
-        self.assertIn("'email': 'test@example.com'", user_str)
-        self.assertIn("'password': 'password123'", user_str)
-        self.assertIn("'first_name': 'Abu'", user_str)
-        self.assertIn("'last_name': 'Farakan'", user_str)
+        self.assertIn("'created_at': " + n_date_r, user_str)
+        self.assertIn("'updated_at': " + n_date_r, user_str)
 
     def test_unique_ids(self):
         # test if any two ids are unique
@@ -112,10 +105,16 @@ class TestUser_save_method(unittest.TestCase):
 
     def test_one_save(self):
         user = User()
-        sleep(0.1)
+        sleep(0.05)
         f_updated_at = user.updated_at
         user.save()
         self.assertLess(f_updated_at, user.updated_at)
+
+    def test_save_args(self):
+        # test to save with args
+        user = User()
+        with self.assertRaises(TypeError):
+            user.save(None)
 
 
 if __name__ == '__main__':

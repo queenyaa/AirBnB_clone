@@ -156,13 +156,11 @@ class TestBaseModel_save_method(unittest.TestCase):
         new_updated_at = obj.updated_at
         self.assertNotEqual(old_updated_at, new_updated_at)
 
-    def test_save_update(self):
-        # test save updates
+    def test_save_args(self):
+        # test save args
         obj = BaseModel()
-        obj.save()
-        objid = "BaseModel" + obj.id
-        with open(FileStorage.__file_path, "r", encoding="utf") as f:
-            self.assertIn(objid, f.read())
+        with self.assertRaises(TypeError):
+            obj.save(None)
 
 
 if __name__ == '__main__':

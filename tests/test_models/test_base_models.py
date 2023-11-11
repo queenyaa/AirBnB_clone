@@ -8,6 +8,7 @@ import models
 import os
 from models.base_model import BaseModel
 from datetime import datetime
+from models.engine.file_storage import FileStorage
 import uuid
 
 class TestBaseModel(unittest.TestCase):
@@ -29,7 +30,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_updated_at_datetime(self):
         # checks if updated datetime is public
-        self.assertEqual(datetime, type(BaseModel().update_at))
+        self.assertEqual(datetime, type(BaseModel().updated_at))
 
     def test_unused_args(self):
         obj = BaseModel(None)

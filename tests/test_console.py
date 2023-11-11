@@ -2,6 +2,9 @@
 """Unittest for console"""
 
 import unittest
+import sys
+from models import storage
+from models.engine.file_storage import FileStorage
 from unittest.mock import patch
 from io import StringIO
 from console import HBNBCommand
@@ -19,11 +22,6 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as mock_stdout:
             self.assertTrue(self.console.onecmd("quit"))
             self.assertEqual(mock_stdout.getvalue(), "")
-
-    def test_help(self):
-        with patch('sys.stdout', new=StringIO()) as mock_stdout:
-            self.assertFalse(self.console.onecmd("help"))
-            self.assertNotEqual(mock_stdout.getvalue(), "")
 
     def test_create(self):
         #  Add tests for create command

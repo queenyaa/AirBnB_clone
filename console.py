@@ -17,8 +17,15 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """class command"""
     prompt = "(hbnb) "
-    classes = ["BaseModel", "User", "Place",
-               "State", "City", "Amenity", "Review"]
+    classes = {
+        "BaseModel",
+        "User",
+        "Place",
+        "State",
+        "City",
+        "Amenity",
+        "Review"
+    }
 
     def do_quit(self, arg):
         """Quit command to exit the program
@@ -131,8 +138,12 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, arg):
         """Class takes and define advance requirment"""
-        my_data = {"all": self.do_all, "destroy":self.do_destroy,
-                   "update": self.do_update, "show": self.do_show}
+        my_data = {
+            "all": self.do_all,
+            "destroy": self.do_destroy,
+            "update": self.do_update,
+            "show": self.do_show
+            }
         args = arg.split(".")
         if len(args) < 1:
             print("** missing arguments **")
@@ -151,7 +162,7 @@ class HBNBCommand(cmd.Cmd):
                 elif key[:-2] not in my_data:
                     print("** method does not exist **")
                 elif key[:-2] in my_data:
-                    my_data[key[:-2]](args[0])
+                    return my_data[key[:-2]](args[0])
 
 
 if __name__ == '__main__':

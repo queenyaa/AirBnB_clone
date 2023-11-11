@@ -137,7 +137,8 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def default(self, arg):
-        """Class takes and define advance requirment"""
+        """Class takes and define advance requirement"""
+
         my_data = {
             "all": self.do_all,
             "destroy": self.do_destroy,
@@ -145,24 +146,24 @@ class HBNBCommand(cmd.Cmd):
             "show": self.do_show
             }
         args = arg.split(".")
-        if len(args) < 1:
+        if len(args) < 2:
             print("** missing arguments **")
         else:
             key = args[1]
-            if args[1] == "count()" and args[0] in HBNBCommand.classes:
-                count = 0
-                for key in storage.all().keys():
-                    d_class = key.split('.')
-                    if d_class[0] == args[0]:
-                        count += 1
-                print(count)
-            else:
-                if key[-2:] != "()":
-                    print("** no instance found **")
-                elif key[:-2] not in my_data:
-                    print("** method does not exist **")
-                elif key[:-2] in my_data:
-                    return my_data[key[:-2]](args[0])
+        if args[1] == "count()" and args[0] in HBNBCommand.classes:
+            count = 0
+            for key in storage.all().keys():
+                d_class = key.split('.')
+                if d_class[0] == args[0]:
+                    count += 1
+            print(count)
+        else:
+            if key[-2:] != "()":
+                print("** no instance found **")
+            elif key[:-2] not in my_data:
+                print("** method does not exist **")
+            elif key[:-2] in my_data:
+                my_data[key[:-2]](args[0])
 
 
 if __name__ == '__main__':

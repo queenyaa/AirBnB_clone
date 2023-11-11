@@ -1,18 +1,7 @@
 #!/usr/bin/python3
 """Unittests test cases for console.py.
-
-Unittest test classes for console:
-    TestHBNBCommand_prompting
-    TestHBNBCommand_help
-    TestHBNBCommand_exit
-    TestHBNBCommand_create
-    TestHBNBCommand_show
-    TestHBNBCommand_all
-    TestHBNBCommand_destroy
-    TestHBNBCommand_update
 """
 import os
-import sys
 import unittest
 from models import storage
 from models.engine.file_storage import FileStorage

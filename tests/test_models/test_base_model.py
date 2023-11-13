@@ -164,6 +164,13 @@ class TestBaseModel_save_method(unittest.TestCase):
         with self.assertRaises(TypeError):
             obj.save(None)
 
+    def test_save_updates(self):
+        obj = BaseModel()
+        obj.save()
+        obj_id = "BaseModel." + obj.id
+        with open("file.json", "r") as f:
+            self.assertIn(obj_id, f.read())
+
 
 if __name__ == '__main__':
     unittest.main()

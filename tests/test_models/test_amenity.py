@@ -31,6 +31,15 @@ class TestAmenity(unittest.TestCase):
         a = Amenity()
         self.assertIs(type(a.name), str)
 
+    def test_instan_with_kwargs(self):
+        """test the kwargs method"""
+        d_time = datetime.now()
+        d_time_i = d_time.isoformat()
+        a = Amenity(id="861", created_at=d_time_i, updated_at=d_time_i)
+        self.assertEqual(a.id, "861")
+        self.assertEqual(a.created_at, d_time)
+        self.assertEqual(a.updated_at, d_time)
+
     def test_two_amenities(self):
         a1 = Amenity()
         a2 = Amenity()

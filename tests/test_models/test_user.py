@@ -28,7 +28,7 @@ class TestUser(unittest.TestCase):
 
     def test_email(self):
         # test if email is public
-        self.assertEqual(str, type(User.password))
+        self.assertEqual(str, type(User.email))
 
     def test_first_name(self):
         # test if first_name is public

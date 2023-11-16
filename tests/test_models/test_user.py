@@ -28,7 +28,11 @@ class TestUser(unittest.TestCase):
 
     def test_email(self):
         # test if email is public
+<<<<<<< HEAD
         self.assertEqual(str, type(User.email))
+=======
+        self.assertEqual(str, type(User.password))
+>>>>>>> upstream/ysg
 
     def test_first_name(self):
         # test if first_name is public

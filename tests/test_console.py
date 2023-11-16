@@ -3,8 +3,16 @@
 """
 import os
 import unittest
+<<<<<<< HEAD
 from models import storage
 from models.engine.file_storage import FileStorage
+=======
+import sys
+from models import storage
+from models.engine.file_storage import FileStorage
+from unittest.mock import patch
+from io import StringIO
+>>>>>>> upstream/ysg
 from console import HBNBCommand
 from io import StringIO
 from unittest.mock import patch
@@ -134,6 +142,7 @@ class TestHBNBCommand_create(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("create"))
             self.assertEqual(correct, output.getvalue().strip())
 
+<<<<<<< HEAD
     def test_create_invalid_class(self):
         correct = "** class doesn't exist **"
         with patch("sys.stdout", new=StringIO()) as output:
@@ -1556,4 +1565,34 @@ class TestHBNBCommand_count(unittest.TestCase):
 
 
 if __name__ == "__main__":
+=======
+    def test_create(self):
+        #  Add tests for create command
+        pass
+
+    def test_show(self):
+        with patch('sys.stdout', new=StringIO()) as mock_stdout:
+            #  Test case where class name is missing
+            self.console.onecmd("show")
+            self.assertIn("** class name missing **",
+                          mock_stdout.getvalue().strip())
+
+            #  Test case where class doesn't exist
+            self.console.onecmd("show UnknownClass")
+            self.assertIn("** class doesn't exist **",
+                          mock_stdout.getvalue().strip())
+
+            #  Test case where instance id is missing
+            self.console.onecmd("show BaseModel")
+            self.assertIn("** instance id missing **",
+                          mock_stdout.getvalue().strip())
+
+            #  Test case where no instance found
+            self.console.onecmd("show BaseModel 123")
+            self.assertIn("** no instance found **",
+                          mock_stdout.getvalue().strip())
+
+
+if __name__ == '__main__':
+>>>>>>> upstream/ysg
     unittest.main()

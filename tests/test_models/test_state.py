@@ -61,7 +61,11 @@ class TestState(unittest.TestCase):
 
 
 class TestState_saving(unittest.TestCase):
+<<<<<<< HEAD
     """
+=======
+    """ 
+>>>>>>> upstream/ysg
     unittests for testing the saving of the State
     class
     """

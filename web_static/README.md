@@ -76,4 +76,44 @@ Feel free to modify and adapt the code as needed for your projects.
 --- 
 
 ---
+# Task 2: CSS Files - Header and Footer HTML Page
+===============================================================
+## Overview
+
+This repository contains an HTML page (2-index.html) that displays a header and a footer. The styling for the body, header, and footer is applied using separate CSS files as specified in Task 2.
+
+## HTML Structure
+
+The HTML file (`2-index.html`) includes the following structure:
+
+- **Head Section:**
+  - Title: "Header and Footer Example"
+  - Link Tags: Link to three separate CSS files for global style, header style, and footer style.
+
+- **Body:**
+  - Header: `<header>` tag representing the header of the page.
+  - Footer: `<footer>` tag representing the footer of the page.
+
+## CSS Files
+
+Three CSS files in the `styles` directory are used to apply styles to different sections of the HTML:
+
+- **styles/2-common.css:**
+  - Contains global styles for the body.
+
+- **styles/2-header.css:**
+  - Contains styles for the header.
+
+- **styles/2-footer.css:**
+  - Contains styles for the footer.
+
+## Usage
+
+To view the HTML page, open the `2-index.html` file in a web browser. The page will display a header and a footer with styling applied from the separate CSS files.
+
+Feel free to modify and adapt the code as needed for your projects.
+
+---
+
+---
 

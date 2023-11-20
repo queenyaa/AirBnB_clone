@@ -256,4 +256,56 @@ Feel free to modify and adapt the code as needed for your projects.
 ---
 
 ---
+# Task 8 Readme
+==================================================
+Task 8 involves enhancing the HTML page layout to display additional information about a place, including price, amenities, and user details. Here are the key features and requirements for Task 8:
+
+## Features:
+
+1. **Price by night:**
+   - Displayed in a circular element with a border and specific styling.
+   - Positioned at the top right corner near the place name.
+
+2. **Information Section:**
+   - Contains details such as the number of guests, bedrooms, and bathrooms.
+   - Presented in a structured manner using separate div elements.
+   - Styled to align at the bottom of the information block.
+
+3. **User Section:**
+   - Displays information about the place owner.
+   - The owner's name is accompanied by a label and is presented in bold.
+
+4. **Description Section:**
+   - Reserved space for describing additional information about the place.
+
+## Requirements:
+
+1. Utilizes HTML tags such as header, footer, section, article, button, h1, h2, h3, h4, ul, and li.
+
+2. Strictly follows a no-inline-style policy, avoiding the use of inline styles for styling elements.
+
+3. Prohibits the use of the img tag and the style tag within the head tag.
+
+4. Requires images to be stored in the images folder.
+
+5. Incorporates five separate CSS files for styling:
+   - styles/4-common.css: Global styles for body and .container.
+   - styles/3-header.css: Styles specific to the header.
+   - styles/3-footer.css: Styles specific to the footer.
+   - styles/6-filters.css: Styles for the filters.
+   - styles/8-places.css: Styles for the places, including additional details.
+
+## Notes:
+
+- The layout follows a structured and organized format, presenting information in a visually appealing manner.
+
+- Each section is designed to provide a clear understanding of the place, its amenities, and the user associated with it.
+
+- The CSS files are modularized, ensuring separation of concerns and maintainability.
+
+By adhering to these requirements, the resulting HTML page should offer an improved and detailed representation of a place, enhancing the overall user experience.
+
+---
+
+---
 
